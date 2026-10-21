@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -21,13 +22,16 @@ jobs:
       - name: Stáhnout globální CO₂
         run: python scripts/download_co2.py
 
+      - name: Stáhnout globální CH₄ a N₂O
+        run: python scripts/download_ch4_n2o.py
+
       - name: Uložit data do repozitáře
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/hadcrut5 data/co2_global
+          git add data/
           if git diff --cached --quiet; then
-            echo "Data se nezměnila."
+            echo "Žádné změny dat."
           else
             git commit -m "Aktualizovat klimatická data"
             git push origin "HEAD:${GITHUB_REF_NAME}"
@@ -35,10 +39,5 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: hadcrut5-data
-          path: data/hadcrut5/
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: co2-global-data
-          path: data/co2_global/
+          name: klimaticka-data
+          path: data/
