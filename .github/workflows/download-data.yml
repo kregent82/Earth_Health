@@ -25,6 +25,9 @@ jobs:
       - name: Stáhnout globální CH₄ a N₂O
         run: python scripts/download_ch4_n2o.py
 
+      - name: Stáhnout zářijový rozsah arktického ledu
+        run: python scripts/download_arctic_sea_ice.py
+
       - name: Uložit data do repozitáře
         run: |
           git config user.name "github-actions[bot]"
