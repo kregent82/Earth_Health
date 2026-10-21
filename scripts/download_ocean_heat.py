@@ -34,8 +34,16 @@ print(
 )
 print(f"Posledních 10 načtených roků: {years[-10:]}")
 
-if len(years) < 50 or len(years) != len(set(years)) or 2025 not in years:
-    raise ValueError("Roční řada NOAA je neúplná nebo změnila formát.")
+if (
+    not years
+    or years[0] != 2005
+    or years[-1] < 2025
+    or years != list(range(2005, years[-1] + 1))
+):
+    raise ValueError(
+        "Roční soubor NOAA neobsahuje souvislou řadu od 2005 "
+        "alespoň do 2025 v očekávaném pořadí."
+    )
 
 DEST.parent.mkdir(parents=True, exist_ok=True)
 if not DEST.exists() or DEST.read_bytes() != raw:
