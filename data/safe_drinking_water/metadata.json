@@ -1,0 +1,9 @@
+{
+  "source_url": "https://api.worldbank.org/v2/country/1W/indicator/SH.H2O.SMDW.ZS?format=json&per_page=200",
+  "publisher_of_download": "World Bank API",
+  "indicator": "SH.H2O.SMDW.ZS",
+  "unit": "% populace",
+  "api_last_updated": "2026-10-08",
+  "source_sha256": "2d1b429646c909c433af9a42877e3ff8c383f0d69e61a257dfc7e46e4c3db29a",
+  "limitation": "Agregát API Světové banky; ověřit proti vydání JMP"
+}

@@ -1,0 +1,9 @@
+{
+  "source_url": "https://api.worldbank.org/v2/country/1W/indicator/SH.DYN.MORT?format=json&per_page=200",
+  "publisher_of_download": "World Bank API",
+  "indicator": "SH.DYN.MORT",
+  "unit": "úmrtí na 1 000 živě narozených",
+  "api_last_updated": "2026-10-08",
+  "source_sha256": "9b2ea5e5081479845a1efa0c37bdfc9eaabe0d83c01a7c9d43465ee13f5091c0",
+  "limitation": "Bez intervalů nejistoty z portálu UN IGME"
+}
