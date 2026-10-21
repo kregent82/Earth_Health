@@ -1,0 +1,11 @@
+{
+  "source_url": "https://www.metoffice.gov.uk/hadobs/hadcrut5/data/HadCRUT.5.2.0.0/analysis/diagnostics/HadCRUT.5.2.0.0.analysis.summary_series.global.annual.csv",
+  "version": "HadCRUT.5.2.0.0",
+  "downloaded_utc": "2026-10-21T14:11:02.621168+00:00",
+  "source_sha256": "7f750b673bb34aad722736ee21f122b5ea692c99877fa0b1066df65e51f32c04",
+  "first_year": 1850,
+  "last_year": 2025,
+  "method": "pozorování a statistická analýza",
+  "reference_period": "1961–1990",
+  "note": "Roční hodnota 2026 je z odvozeného souboru vyloučena."
+}
