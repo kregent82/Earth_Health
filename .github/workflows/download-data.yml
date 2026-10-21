@@ -3,6 +3,9 @@ name: Stáhnout ověřená data
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   download:
     runs-on: ubuntu-latest
@@ -11,8 +14,31 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python scripts/download_hadcrut.py
+
+      - name: Stáhnout HadCRUT5
+        run: python scripts/download_hadcrut.py
+
+      - name: Stáhnout globální CO₂
+        run: python scripts/download_co2.py
+
+      - name: Uložit data do repozitáře
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/hadcrut5 data/co2_global
+          if git diff --cached --quiet; then
+            echo "Data se nezměnila."
+          else
+            git commit -m "Aktualizovat klimatická data"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+
       - uses: actions/upload-artifact@v4
         with:
           name: hadcrut5-data
           path: data/hadcrut5/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: co2-global-data
+          path: data/co2_global/
