@@ -26,6 +26,14 @@ for line in text.splitlines()[1:]:
         raise ValueError(f"Neočekávaný údaj roku: {year_marker}")
     years.append(year)
 
+print(
+    f"NOAA: počet={len(years)}, "
+    f"první={min(years) if years else 'žádný'}, "
+    f"poslední={max(years) if years else 'žádný'}, "
+    f"duplicity={len(years) - len(set(years))}"
+)
+print(f"Posledních 10 načtených roků: {years[-10:]}")
+
 if len(years) < 50 or len(years) != len(set(years)) or 2025 not in years:
     raise ValueError("Roční řada NOAA je neúplná nebo změnila formát.")
 
